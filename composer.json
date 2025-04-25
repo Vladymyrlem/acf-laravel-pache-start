@@ -3,6 +3,7 @@
   "description": "ACF-like custom fields system for Laravel",
   "type": "library",
     "version": "1.0",
+    "license": "GPL-3.0-or-later",
   "autoload": {
     "psr-4": {
       "Vendor\\AcfLaravel\\": "src/"
