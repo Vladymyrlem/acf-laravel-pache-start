@@ -1,16 +1,41 @@
 <template>
-  <div>
-    <div v-for="(field, key) in fields" :key="key" class="mb-4">
-      <label class="block font-semibold mb-1">{{ field.label ?? key }}</label>
-      <textarea v-if="field.type === 'textarea'" :name="`custom_fields[${key}]`" v-model="model[key]" class="w-full border rounded p-2" />
-      <input v-else :type="field.type || 'text'" :name="`custom_fields[${key}]`" v-model="model[key]" class="w-full border rounded p-2" />
+    <div>
+        <div v-for="(field, index) in fields" :key="field.id" class="mb-3">
+            <label :for="'field_' + field.id">{{ field.label }}</label>
+            <input
+                type="text"
+                class="form-control"
+                :name="'custom_fields[' + field.id + '][value]'"
+                v-model="model[field.id].value"
+            />
+            <input
+                type="hidden"
+                :name="'custom_fields[' + field.id + '][field_definition_id]'"
+                :value="field.id"
+            />
+        </div>
     </div>
-  </div>
 </template>
 
 <script setup>
-defineProps({
-  model: Object,
-  fields: Object
-});
+import {reactive, watch, onMounted} from 'vue'
+import {toRaw} from 'vue'
+
+const props = defineProps({
+    fields: Array,
+    model: Object
+})
+
+let model = reactive({})
+
+// Ініціалізуємо model з даними
+onMounted(() => {
+    props.fields.forEach(field => {
+        if (!model[field.id]) {
+            model[field.id] = {
+                value: props.model[field.id]?.value || ''
+            }
+        }
+    })
+})
 </script>
