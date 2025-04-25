@@ -1,5 +1,5 @@
 {
-  "name": "vendor/acf-laravel",
+  "name": "vladymyrlem/acf-laravel",
   "description": "ACF-like custom fields system for Laravel",
   "type": "library",
     "version": "1.0",
