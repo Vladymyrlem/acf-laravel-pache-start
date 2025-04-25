@@ -2,13 +2,20 @@
   "name": "vladymyrlem/acf-laravel",
   "description": "ACF-like custom fields system for Laravel",
   "type": "library",
-    "version": "1.1.0",
-    "license": "GPL-3.0-or-later",
+  "minimum-stability": "dev",
+  "version": "1.1.0",
+  "license": "proprietary",
   "autoload": {
     "psr-4": {
       "Vendor\\AcfLaravel\\": "src/"
     }
   },
+    "authors": [
+        {
+            "name": "vovan",
+            "email": "vovangud@gmail.com"
+        }
+    ],
   "extra": {
     "laravel": {
       "providers": [
